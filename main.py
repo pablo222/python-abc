@@ -8,7 +8,7 @@ class PoleFigury(ABC):
 
     @property
     @abstractmethod
-    def oblicz_pole(self) -> float:
+    def pole_powierzchni(self) -> float:
         pass
 
 class Kwadrat(PoleFigury) :
@@ -16,10 +16,10 @@ class Kwadrat(PoleFigury) :
         self.a = a
 
     def __str__(self) -> str:
-        return f"Pole kwadratu o boku {self.a} wynosi {self.oblicz_pole}"
+        return f"Pole kwadratu o boku {self.a} wynosi {self.pole_powierzchni}"
 
     @property
-    def oblicz_pole(self) -> float :
+    def pole_powierzchni(self) -> float :
         return self.a ** 2
 
 
@@ -29,10 +29,10 @@ class Prostokat(PoleFigury):
         self.b = b
 
     def __str__(self) -> str:
-        return  f"Pole prostokatka o boku {self.a} i {self.b} wynosi {self.oblicz_pole}"
+        return  f"Pole prostokatka o boku {self.a} i {self.b} wynosi {self.pole_powierzchni}"
 
     @property
-    def oblicz_pole(self) -> float :
+    def pole_powierzchni(self) -> float :
         return self.a * self.b
 
 
@@ -41,10 +41,10 @@ class Kolo(PoleFigury):
         self.r = r
 
     def __str__(self) -> str:
-        return f"Pole kolo {self.r} wynosi {self.oblicz_pole}"
+        return f"Pole kolo {self.r} wynosi {self.pole_powierzchni}"
 
     @property
-    def oblicz_pole(self) -> float :
+    def pole_powierzchni(self) -> float :
         return pi * (self.r ** 2)
 
 
