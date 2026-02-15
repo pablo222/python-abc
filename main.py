@@ -52,7 +52,7 @@ class Kolo(PoleFigury):
 
 kwadrat = Kwadrat(Width(2))
 print(kwadrat)
-prostokat = Prostokat(5, 4)
+prostokat = Prostokat(Width(5),Height(5))
 print(prostokat)
-kolo = Kolo(5)
+kolo = Kolo(Radius(5))
 print(kolo)
