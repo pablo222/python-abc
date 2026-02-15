@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 from math import pi
+from factory import Width, Height, Radius
+
 
 class PoleFigury(ABC):
     @abstractmethod
@@ -12,43 +14,43 @@ class PoleFigury(ABC):
         pass
 
 class Kwadrat(PoleFigury) :
-    def __init__(self, a: float) -> None:
-        self.a = a
+    def __init__(self, width: Width) -> None:
+        self.width = width
 
     def __str__(self) -> str:
-        return f"Pole kwadratu o boku {self.a} wynosi {self.pole_powierzchni}"
+        return f"Pole kwadratu o boku {self.width.value} wynosi {self.pole_powierzchni:.2f}"
 
     @property
     def pole_powierzchni(self) -> float :
-        return self.a ** 2
+        return float(self.width) ** 2
 
 
 class Prostokat(PoleFigury):
-    def __init__(self, a: float, b: float) -> None:
-        self.a = a
-        self.b = b
+    def __init__(self, width: Width, height: Height) -> None:
+        self.width = width
+        self.height = height
 
     def __str__(self) -> str:
-        return  f"Pole prostokatka o boku {self.a} i {self.b} wynosi {self.pole_powierzchni}"
+        return  f"Pole prostokatka o boku {self.width} i {self.height} wynosi {self.pole_powierzchni}"
 
     @property
     def pole_powierzchni(self) -> float :
-        return self.a * self.b
+        return float(self.width) * float(self.height)
 
 
 class Kolo(PoleFigury):
-    def __init__(self, r: float) -> None:
-        self.r = r
+    def __init__(self, radius: Radius) -> None:
+        self.radius = radius
 
     def __str__(self) -> str:
-        return f"Pole kolo {self.r} wynosi {self.pole_powierzchni}"
+        return f"Pole kolo {self.radius} wynosi {self.pole_powierzchni}"
 
     @property
     def pole_powierzchni(self) -> float :
-        return pi * (self.r ** 2)
+        return pi * (float(self.radius) ** 2)
 
 
-kwadrat = Kwadrat(2)
+kwadrat = Kwadrat(Width(2))
 print(kwadrat)
 prostokat = Prostokat(5, 4)
 print(prostokat)
