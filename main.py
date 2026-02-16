@@ -1,58 +1,30 @@
-from abc import ABC, abstractmethod
-from math import pi
-from factory import Width, Height, Radius
+from factory import ShapeFactory
 
 
-class PoleFigury(ABC):
-    @abstractmethod
-    def __str__(self) -> str:
-        pass
+def main():
+    shape_data = {
+        "shape_type": "circle",
+        "radius": 5
+    }
+    shape_circle = ShapeFactory.create_shape(**shape_data)
+    print(shape_circle)
 
-    @property
-    @abstractmethod
-    def pole_powierzchni(self) -> float:
-        pass
+    shape_data_rectangle = {
+        "shape_type": "rectangle",
+        "width": 10,
+        "height": 8,
+    }
+    shape2 = ShapeFactory.create_shape(**shape_data_rectangle)
+    print(shape2)
 
-class Kwadrat(PoleFigury) :
-    def __init__(self, width: Width) -> None:
-        self.width = width
-
-    def __str__(self) -> str:
-        return f"Pole kwadratu o boku {self.width.value} wynosi {self.pole_powierzchni:.2f}"
-
-    @property
-    def pole_powierzchni(self) -> float :
-        return float(self.width) ** 2
-
-
-class Prostokat(PoleFigury):
-    def __init__(self, width: Width, height: Height) -> None:
-        self.width = width
-        self.height = height
-
-    def __str__(self) -> str:
-        return  f"Pole prostokatka o boku {self.width} i {self.height} wynosi {self.pole_powierzchni}"
-
-    @property
-    def pole_powierzchni(self) -> float :
-        return float(self.width) * float(self.height)
+    shape_data_triangle = {
+        "shape_type": "triangle",
+        "base": 10,
+        "height": 8,
+    }
+    shape_triangle = ShapeFactory.create_shape(**shape_data_triangle)
+    print(shape_triangle)
 
 
-class Kolo(PoleFigury):
-    def __init__(self, radius: Radius) -> None:
-        self.radius = radius
-
-    def __str__(self) -> str:
-        return f"Pole kolo {self.radius} wynosi {self.pole_powierzchni}"
-
-    @property
-    def pole_powierzchni(self) -> float :
-        return pi * (float(self.radius) ** 2)
-
-
-kwadrat = Kwadrat(Width(2))
-print(kwadrat)
-prostokat = Prostokat(Width(5),Height(5))
-print(prostokat)
-kolo = Kolo(Radius(5))
-print(kolo)
+if __name__ == "__main__":
+    main()
