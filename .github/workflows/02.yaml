@@ -1,5 +1,13 @@
 name: 02 - Workflow Events
-on: push
+on:
+    push:
+    pull_request:
+        branches:
+            - main
+    # schedule:
+    #     - cron: '0 0 * * *'  # Runs every day at midnight UTC
+    workflow_dispatch:
+
 
 jobs:
     echo:
@@ -7,4 +15,3 @@ jobs:
         steps:
             - name: Show the trigger
               run: echo "I've been triggered by a ${{ github.event_name }} event"
-              
